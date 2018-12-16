@@ -1,0 +1,22 @@
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker run -d nginx
+e9cf3ba774844a5808cea4e1a637f9aa9308059e007818127ed7cd2ce322316f
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker run -d nginx
+f84491b5f563232457f1abbe13e93a471e496deab32f3cd367fc5e42eff65996
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker run -d nginx
+fcf4cdd823063366b16fd64d50c36ef2cf3b83c412052825c6cc4a2fb0b5adeb
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS               NAMES
+fcf4cdd82306        nginx               "nginx -g 'daemon of…"   2 seconds ago       Up 2 seconds        80/tcp              angry_vaughan
+f84491b5f563        nginx               "nginx -g 'daemon of…"   4 seconds ago       Up 3 seconds        80/tcp              competent_murdock
+e9cf3ba77484        nginx               "nginx -g 'daemon of…"   5 seconds ago       Up 4 seconds        80/tcp              affectionate_fermi
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker stop fc f8
+fc
+f8
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+fcf4cdd82306        nginx               "nginx -g 'daemon of…"   18 seconds ago      Exited (0) 2 seconds ago                       angry_vaughan
+f84491b5f563        nginx               "nginx -g 'daemon of…"   20 seconds ago      Exited (0) 2 seconds ago                       competent_murdock
+e9cf3ba77484        nginx               "nginx -g 'daemon of…"   21 seconds ago      Up 20 seconds              80/tcp              affectionate_fermi
+pqkallio@fuxi16:~/devops-with-docker/week1$

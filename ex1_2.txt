@@ -1,0 +1,26 @@
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS               NAMES
+fcf4cdd82306        nginx               "nginx -g 'daemon of…"   2 minutes ago       Exited (0) 2 minutes ago                       angry_vaughan
+f84491b5f563        nginx               "nginx -g 'daemon of…"   2 minutes ago       Exited (0) 2 minutes ago                       competent_murdock
+e9cf3ba77484        nginx               "nginx -g 'daemon of…"   2 minutes ago       Up 2 minutes               80/tcp              affectionate_fermi
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+nginx               latest              568c4670fa80        2 weeks ago         109MB
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker stop e9
+e9
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker rm fc f8 e9
+fc
+f8
+e9
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker rmi nginx
+Untagged: nginx:latest
+Untagged: nginx@sha256:5d32f60db294b5deb55d078cd4feb410ad88e6fe77500c87d3970eca97f54dba
+Deleted: sha256:568c4670fa800978e08e4a51132b995a54f8d5ae83ca133ef5546d092b864acf
+Deleted: sha256:ac0442c0fafd48e24a96fa3099ea7ad20012c8759e1dd03dd387dbfbe382984c
+Deleted: sha256:6b9d35d8d75115937cd78da275f527cccef672cbd71f34062dffe2e930fd7e13
+Deleted: sha256:ef68f6734aa485edf13a8509fe60e4272428deaf63f446a441b79d47fc5d17d3
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+pqkallio@fuxi16:~/devops-with-docker/week1$
