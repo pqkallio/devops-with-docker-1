@@ -1,0 +1,12 @@
+// I incorporated the retrieval and building of the web application
+// into the building process of the image (check the Dockerfile).
+
+// After this, when running the container and binding the port like this:
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.5$ docker run -p 5000:5000 frontend-example-docker
+
+// I got the following output:
+INFO: Accepting connections at http://localhost:5000
+
+// And when navigating to that address from the browser, the page appeared
+// with the following text:
+Exercise 1.4: Congratulations! You configured your ports correctly!
