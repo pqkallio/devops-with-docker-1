@@ -1,6 +1,6 @@
 // I incorporated the curl-installation into the run script:
 
-pqkallio@fuxi16:~/devops-with-docker/week1$ docker run -d --rm -i --name reader ubuntu:16.04 sh -c 'apt update; apt upgrade -y; apt install -y curl; while true; do read website; sleep 3; curl http://helsinki.fi; done'
+pqkallio@fuxi16:~/devops-with-docker/week1$ docker run -d --rm -i --name reader ubuntu:16.04 sh -c 'apt update; apt upgrade -y; apt install -y curl; while true; do read website; sleep 3; curl http://$website; done'
 393b4644c84e91f4322669fa304383d1550091f531425cd69b0a1b5f75880cf0
 pqkallio@fuxi16:~/devops-with-docker/week1$
 
