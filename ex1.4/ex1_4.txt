@@ -1,0 +1,77 @@
+// By running the build command in the folder that the Dockerfile is in
+// we get the following (abbreviated) output:
+
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.4$ docker build -t curler .
+Sending build context to Docker daemon  2.048kB
+Step 1/3 : FROM ubuntu:16.04
+ ---> a51debf7e1eb
+Step 2/3 : RUN apt update && apt install -y curl
+ ---> Running in 83fd8407f412
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Get:1 http://archive.ubuntu.com/ubuntu xenial InRelease [247 kB]
+...
+Get:18 http://archive.ubuntu.com/ubuntu xenial-backports/universe amd64 Packages [8532 B]
+Fetched 15.6 MB in 12s (1264 kB/s)
+Reading package lists...
+Building dependency tree...
+Reading state information...
+5 packages can be upgraded. Run 'apt list --upgradable' to see them.
+
+WARNING: apt does not have a stable CLI interface. Use with caution in scripts.
+
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  ca-certificates krb5-locales libasn1-8-heimdal libcurl3-gnutls libffi6
+...
+Setting up libcurl3-gnutls:amd64 (7.47.0-1ubuntu2.11) ...
+Setting up libsasl2-modules:amd64 (2.1.26.dfsg1-14ubuntu0.1) ...
+Setting up curl (7.47.0-1ubuntu2.11) ...
+Processing triggers for libc-bin (2.23-0ubuntu10) ...
+Processing triggers for ca-certificates (20170717~16.04.1) ...
+Updating certificates in /etc/ssl/certs...
+148 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+Removing intermediate container 83fd8407f412
+ ---> b783efa23603
+Step 3/3 : CMD ["sh", "-c", "read website; sleep 3; curl http://$website"]
+ ---> Running in 2e7ddc840612
+Removing intermediate container 2e7ddc840612
+ ---> fcc79e5ce335
+Successfully built fcc79e5ce335
+Successfully tagged curler:latest
+
+
+
+// After this we can see that the corresponding image has been created:
+
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.4$ docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+curler              latest              fcc79e5ce335        13 seconds ago      157MB
+fav_distro          xenial              a51debf7e1eb        3 weeks ago         116MB
+ubuntu              16.04               a51debf7e1eb        3 weeks ago         116MB
+ubuntu              xenial              a51debf7e1eb        3 weeks ago         116MB
+ubuntu              latest              93fd78260bd1        3 weeks ago         86.2MB
+
+
+
+// Now, if we run the curler container with -i flag, we can input helsinki.fi
+// and we get the same result as we did in exercise 1.3:
+
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.4$ docker run -i curler
+helsinki.fi
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   231  100   231    0     0   1824      0 --:--:-- --:--:-- --:--:--  1833
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>301 Moved Permanently</title>
+</head><body>
+<h1>Moved Permanently</h1>
+<p>The document has moved <a href="http://www.helsinki.fi/">here</a>.</p>
+</body></html>
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.4$
