@@ -1,0 +1,36 @@
+// The Dockerfile contains everything needed to install the backend project as well all its
+// dependencies, exposing the gate as well as the entrypoint.
+
+
+
+// After creating the image we run a container with it and bind its port 8000 to hosts
+// port 8000 and its log file "backend-docker-example/logs.txt" to the precreated logs.txt
+// file in the folder the container is run from by using the following command:
+
+docker run -p 8000:8000 -v $(pwd)/logs.txt:/backend-example-docker/logs.txt backend-example-docker
+
+
+
+// Then, as we can see, the logs.txt in the folder the container was run from contain
+// the logs that were logged in the container. These logs (also included in the exercise
+// folder) were created in two different runs to make sure the latter run included the
+// logging of the first run as well.
+
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.6$ cat logs.txt 
+12/17/2018, 4:53:28 PM: Connection received in root
+12/17/2018, 4:55:35 PM: Connection received in root
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.6$ docker ps -a
+CONTAINER ID        IMAGE                     COMMAND                  CREATED              STATUS                          PORTS                    NAMES
+642f54a75491        backend-example-docker    "npm start --prefix …"   About a minute ago   Up About a minute               0.0.0.0:8000->8000/tcp   frosty_shaw
+c05ef27b062e        backend-example-docker    "npm start --prefix …"   3 minutes ago        Exited (0) About a minute ago                            competent_tesla
+1be554b9546b        backend-example-docker    "npm start --prefix …"   5 minutes ago        Exited (0) 3 minutes ago                                 inspiring_franklin
+261c5e716d7b        backend-example-docker    "npm start --prefix …"   About an hour ago    Exited (0) 5 minutes ago                                 cranky_snyder
+f84834eb7755        frontend-example-docker   "serve -s -l 5000 fr…"   21 hours ago         Exited (0) 2 minutes ago                                 condescending_taussig
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.6$ docker exec -it frosty_shaw bash
+root@642f54a75491:/# cd backend-example-docker/
+root@642f54a75491:/backend-example-docker# cat logs.txt 
+12/17/2018, 4:53:28 PM: Connection received in root
+12/17/2018, 4:55:35 PM: Connection received in root
+root@642f54a75491:/backend-example-docker# exit
+exit
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.6$
