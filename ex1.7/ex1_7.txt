@@ -1,0 +1,18 @@
+// The Dockerfiles for front- and backend are in their respective folders.
+// The commands in them have been modified as was suggested in the exercise.
+
+// After building the images, I started the backend with the following command:
+
+docker run -p 8000:8000 1_7_backend
+
+
+// and the frontend with the following command:
+
+docker run -p 5000:5000 1_7_frontend
+
+
+// I navigated to frontend application in the browser and hit the test button.
+// Everything was ok and the network logs of the developer tools showed that
+// message was sent to localhost:8000/ping and the response was pong with a
+// statuscode 200.
+
