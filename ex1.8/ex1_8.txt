@@ -1,5 +1,8 @@
+// The link to dockerhub repository:
+//   https://cloud.docker.com/repository/docker/pqkallio/minipl_interpreter
+//
 // The repository I used for this one is the project for the course Compilers (2017-2018):
-// https://github.com/pqkallio/MiniPLInterpreter2000
+//   https://github.com/pqkallio/MiniPLInterpreter2000
 //
 // The Dockerfile clones the repository, installs needed dependencies and runs a loop where
 // you can input a file name that contains a script in Mini-PL programming language that
