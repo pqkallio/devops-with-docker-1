@@ -1,0 +1,29 @@
+// The repository I used for this one is the project for the course Compilers (2017-2018):
+// https://github.com/pqkallio/MiniPLInterpreter2000
+//
+// The Dockerfile clones the repository, installs needed dependencies and runs a loop where
+// you can input a file name that contains a script in Mini-PL programming language that
+// you want to run. The definition of the syntax of Mini-PL can be found in the same folder
+// as this file.
+//
+// You should bind a volume to the folder containing the scripts like this:
+
+docker run -i -v {your_local_script_folder}:/minipl_scripts minipl_interpreter
+
+
+
+// There are two example scripts in the subfolder "minipl_scripts".
+
+// Here's an example output:
+
+pqkallio@fuxi16:~/devops-with-docker/week1/ex1.8$ docker run -i -v $(pwd)inipl_scripts:/minipl_scripts minipl_interpreter
+Give the name of the script: 
+hello_world.mpl
+How many times?5
+0 : Hello, World!
+1 : Hello, World!
+2 : Hello, World!
+3 : Hello, World!
+4 : Hello, World!
+Give the name of the script: 
+^Cpqkallio@fuxi16:~/devops-with-docker/week1/ex1.8$
